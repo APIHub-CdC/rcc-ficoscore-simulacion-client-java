@@ -81,8 +81,6 @@ public class ApiTest {
 
 			Assert.assertTrue(response.getFolioConsulta() != null);
 			logger.info(response.toString());
-			logger.info(response.toString());
-			//logger.info(response.toString());
 
 			if (response.getFolioConsulta() != null && !xFullReport) {
 				String folioConsulta = response.getFolioConsulta();
