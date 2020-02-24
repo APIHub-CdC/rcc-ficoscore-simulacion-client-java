@@ -4,6 +4,7 @@ import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.RCCFicoScoreSimulacion.client.model.CAN;
 import io.RCCFicoScoreSimulacion.client.model.CatalogoFrecuenciaPago;
 import io.RCCFicoScoreSimulacion.client.model.CatalogoMoneda;
 import io.RCCFicoScoreSimulacion.client.model.CatalogoPrevencion;
@@ -88,22 +89,8 @@ public class Credito {
   private String idDomicilio = null;
   @SerializedName("servicios")
   private String servicios = null;
-  @SerializedName("identificadorCan")
-  private String identificadorCan = null;
-  @SerializedName("prelacionOrige")
-  private String prelacionOrige = null;
-  @SerializedName("prelacionActual")
-  private String prelacionActual = null;
-  @SerializedName("fechaAperturaCAN")
-  private String fechaAperturaCAN = null;
-  @SerializedName("fechaCancelacionCAN")
-  private String fechaCancelacionCAN = null;
-  @SerializedName("historicoCAN")
-  private String historicoCAN = null;
-  @SerializedName("fechaMRCAN")
-  private String fechaMRCAN = null;
-  @SerializedName("fechaMACAN")
-  private String fechaMACAN = null;
+  @SerializedName("CAN")
+  private CAN CAN = null;
   public Credito fechaActualizacion(String fechaActualizacion) {
     this.fechaActualizacion = fechaActualizacion;
     return this;
@@ -337,7 +324,7 @@ public class Credito {
     return this;
   }
    
-  @ApiModelProperty(example = "", value = "Garantía utilizada para asegurar el crédito otorgado.")
+  @ApiModelProperty(example = "Seguro de vida SA de CV", value = "Garantía utilizada para asegurar el crédito otorgado.")
   public String getGarantia() {
     return garantia;
   }
@@ -548,101 +535,17 @@ public class Credito {
   public void setServicios(String servicios) {
     this.servicios = servicios;
   }
-  public Credito identificadorCan(String identificadorCan) {
-    this.identificadorCan = identificadorCan;
+  public Credito CAN(CAN CAN) {
+    this.CAN = CAN;
     return this;
   }
    
-  @ApiModelProperty(example = "01", value = "Indica el estatus del crédito cuando es asociado a la nómina. <table><thead><tr><th>Clave</th><th>Descripción</th></tr></thead><tbody><tr><td>01</td><td>Activo</td></tr><tr><td>02</td><td>Cancelado</td></tr></tbody></table>")
-  public String getIdentificadorCan() {
-    return identificadorCan;
+  @ApiModelProperty(value = "")
+  public CAN getCAN() {
+    return CAN;
   }
-  public void setIdentificadorCan(String identificadorCan) {
-    this.identificadorCan = identificadorCan;
-  }
-  public Credito prelacionOrige(String prelacionOrige) {
-    this.prelacionOrige = prelacionOrige;
-    return this;
-  }
-   
-  @ApiModelProperty(example = "01", value = "Indica el orden de la prelación origen.")
-  public String getPrelacionOrige() {
-    return prelacionOrige;
-  }
-  public void setPrelacionOrige(String prelacionOrige) {
-    this.prelacionOrige = prelacionOrige;
-  }
-  public Credito prelacionActual(String prelacionActual) {
-    this.prelacionActual = prelacionActual;
-    return this;
-  }
-   
-  @ApiModelProperty(example = "01", value = "Indica el orden de la prelación actual.")
-  public String getPrelacionActual() {
-    return prelacionActual;
-  }
-  public void setPrelacionActual(String prelacionActual) {
-    this.prelacionActual = prelacionActual;
-  }
-  public Credito fechaAperturaCAN(String fechaAperturaCAN) {
-    this.fechaAperturaCAN = fechaAperturaCAN;
-    return this;
-  }
-   
-  @ApiModelProperty(example = "2016-03-16", value = "Fecha asociada a la apertura de la domiciliación CAN")
-  public String getFechaAperturaCAN() {
-    return fechaAperturaCAN;
-  }
-  public void setFechaAperturaCAN(String fechaAperturaCAN) {
-    this.fechaAperturaCAN = fechaAperturaCAN;
-  }
-  public Credito fechaCancelacionCAN(String fechaCancelacionCAN) {
-    this.fechaCancelacionCAN = fechaCancelacionCAN;
-    return this;
-  }
-   
-  @ApiModelProperty(example = "2016-03-16", value = "Fecha asociada a la cancelación de la domiciliación CAN")
-  public String getFechaCancelacionCAN() {
-    return fechaCancelacionCAN;
-  }
-  public void setFechaCancelacionCAN(String fechaCancelacionCAN) {
-    this.fechaCancelacionCAN = fechaCancelacionCAN;
-  }
-  public Credito historicoCAN(String historicoCAN) {
-    this.historicoCAN = historicoCAN;
-    return this;
-  }
-   
-  @ApiModelProperty(example = "1", value = "Histórico CAN. Muestra los últimos 36 meses de historia. (Cada valor representa un mes) <table><thead><tr><th>Clave</th><th>Descripción</th></tr></thead><tbody><tr><td>1</td><td>Activo</td></tr><tr><td>2</td><td>Cancelado</td></tr><tr><td>-</td><td>No reportado</td></tr></tbody></table>")
-  public String getHistoricoCAN() {
-    return historicoCAN;
-  }
-  public void setHistoricoCAN(String historicoCAN) {
-    this.historicoCAN = historicoCAN;
-  }
-  public Credito fechaMRCAN(String fechaMRCAN) {
-    this.fechaMRCAN = fechaMRCAN;
-    return this;
-  }
-   
-  @ApiModelProperty(example = "2016-03-16", value = "Fecha más reciente del histórico CAN)")
-  public String getFechaMRCAN() {
-    return fechaMRCAN;
-  }
-  public void setFechaMRCAN(String fechaMRCAN) {
-    this.fechaMRCAN = fechaMRCAN;
-  }
-  public Credito fechaMACAN(String fechaMACAN) {
-    this.fechaMACAN = fechaMACAN;
-    return this;
-  }
-   
-  @ApiModelProperty(example = "2016-03-16", value = "Fecha más antigua del histórico CAN (en que inicio el histórico)")
-  public String getFechaMACAN() {
-    return fechaMACAN;
-  }
-  public void setFechaMACAN(String fechaMACAN) {
-    this.fechaMACAN = fechaMACAN;
+  public void setCAN(CAN CAN) {
+    this.CAN = CAN;
   }
   @Override
   public boolean equals(java.lang.Object o) {
@@ -690,18 +593,11 @@ public class Credito {
         Objects.equals(this.montoUltimoPago, credito.montoUltimoPago) &&
         Objects.equals(this.idDomicilio, credito.idDomicilio) &&
         Objects.equals(this.servicios, credito.servicios) &&
-        Objects.equals(this.identificadorCan, credito.identificadorCan) &&
-        Objects.equals(this.prelacionOrige, credito.prelacionOrige) &&
-        Objects.equals(this.prelacionActual, credito.prelacionActual) &&
-        Objects.equals(this.fechaAperturaCAN, credito.fechaAperturaCAN) &&
-        Objects.equals(this.fechaCancelacionCAN, credito.fechaCancelacionCAN) &&
-        Objects.equals(this.historicoCAN, credito.historicoCAN) &&
-        Objects.equals(this.fechaMRCAN, credito.fechaMRCAN) &&
-        Objects.equals(this.fechaMACAN, credito.fechaMACAN);
+        Objects.equals(this.CAN, credito.CAN);
   }
   @Override
   public int hashCode() {
-    return Objects.hash(fechaActualizacion, registroImpugnado, claveOtorgante, nombreOtorgante, cuentaActual, tipoResponsabilidad, tipoCuenta, tipoCredito, claveUnidadMonetaria, valorActivoValuacion, numeroPagos, frecuenciaPagos, montoPagar, fechaAperturaCuenta, fechaUltimoPago, fechaUltimaCompra, fechaCierreCuenta, fechaReporte, ultimaFechaSaldoCero, garantia, creditoMaximo, saldoActual, limiteCredito, saldoVencido, numeroPagosVencidos, pagoActual, historicoPagos, fechaRecienteHistoricoPagos, fechaAntiguaHistoricoPagos, clavePrevencion, totalPagosReportados, peorAtraso, fechaPeorAtraso, saldoVencidoPeorAtraso, montoUltimoPago, idDomicilio, servicios, identificadorCan, prelacionOrige, prelacionActual, fechaAperturaCAN, fechaCancelacionCAN, historicoCAN, fechaMRCAN, fechaMACAN);
+    return Objects.hash(fechaActualizacion, registroImpugnado, claveOtorgante, nombreOtorgante, cuentaActual, tipoResponsabilidad, tipoCuenta, tipoCredito, claveUnidadMonetaria, valorActivoValuacion, numeroPagos, frecuenciaPagos, montoPagar, fechaAperturaCuenta, fechaUltimoPago, fechaUltimaCompra, fechaCierreCuenta, fechaReporte, ultimaFechaSaldoCero, garantia, creditoMaximo, saldoActual, limiteCredito, saldoVencido, numeroPagosVencidos, pagoActual, historicoPagos, fechaRecienteHistoricoPagos, fechaAntiguaHistoricoPagos, clavePrevencion, totalPagosReportados, peorAtraso, fechaPeorAtraso, saldoVencidoPeorAtraso, montoUltimoPago, idDomicilio, servicios, CAN);
   }
   @Override
   public String toString() {
@@ -745,14 +641,7 @@ public class Credito {
     sb.append("    montoUltimoPago: ").append(toIndentedString(montoUltimoPago)).append("\n");
     sb.append("    idDomicilio: ").append(toIndentedString(idDomicilio)).append("\n");
     sb.append("    servicios: ").append(toIndentedString(servicios)).append("\n");
-    sb.append("    identificadorCan: ").append(toIndentedString(identificadorCan)).append("\n");
-    sb.append("    prelacionOrige: ").append(toIndentedString(prelacionOrige)).append("\n");
-    sb.append("    prelacionActual: ").append(toIndentedString(prelacionActual)).append("\n");
-    sb.append("    fechaAperturaCAN: ").append(toIndentedString(fechaAperturaCAN)).append("\n");
-    sb.append("    fechaCancelacionCAN: ").append(toIndentedString(fechaCancelacionCAN)).append("\n");
-    sb.append("    historicoCAN: ").append(toIndentedString(historicoCAN)).append("\n");
-    sb.append("    fechaMRCAN: ").append(toIndentedString(fechaMRCAN)).append("\n");
-    sb.append("    fechaMACAN: ").append(toIndentedString(fechaMACAN)).append("\n");
+    sb.append("    CAN: ").append(toIndentedString(CAN)).append("\n");
     sb.append("}");
     return sb.toString();
   }

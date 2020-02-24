@@ -21,6 +21,8 @@ public class Respuesta {
   private String folioConsultaOtorgante = null;
   @SerializedName("claveOtorgante")
   private String claveOtorgante = null;
+  @SerializedName("declaracionesConsumidor")
+  private String declaracionesConsumidor = null;
   @SerializedName("persona")
   private PersonasRespuesta persona = null;
   @SerializedName("consultas")
@@ -70,6 +72,18 @@ public class Respuesta {
   }
   public void setClaveOtorgante(String claveOtorgante) {
     this.claveOtorgante = claveOtorgante;
+  }
+  public Respuesta declaracionesConsumidor(String declaracionesConsumidor) {
+    this.declaracionesConsumidor = declaracionesConsumidor;
+    return this;
+  }
+   
+  @ApiModelProperty(example = "Inconforme con el Resultado", value = "")
+  public String getDeclaracionesConsumidor() {
+    return declaracionesConsumidor;
+  }
+  public void setDeclaracionesConsumidor(String declaracionesConsumidor) {
+    this.declaracionesConsumidor = declaracionesConsumidor;
   }
   public Respuesta persona(PersonasRespuesta persona) {
     this.persona = persona;
@@ -209,6 +223,7 @@ public class Respuesta {
     return Objects.equals(this.folioConsulta, respuesta.folioConsulta) &&
         Objects.equals(this.folioConsultaOtorgante, respuesta.folioConsultaOtorgante) &&
         Objects.equals(this.claveOtorgante, respuesta.claveOtorgante) &&
+        Objects.equals(this.declaracionesConsumidor, respuesta.declaracionesConsumidor) &&
         Objects.equals(this.persona, respuesta.persona) &&
         Objects.equals(this.consultas, respuesta.consultas) &&
         Objects.equals(this.creditos, respuesta.creditos) &&
@@ -219,7 +234,7 @@ public class Respuesta {
   }
   @Override
   public int hashCode() {
-    return Objects.hash(folioConsulta, folioConsultaOtorgante, claveOtorgante, persona, consultas, creditos, domicilios, empleos, scores, mensajes);
+    return Objects.hash(folioConsulta, folioConsultaOtorgante, claveOtorgante, declaracionesConsumidor, persona, consultas, creditos, domicilios, empleos, scores, mensajes);
   }
   @Override
   public String toString() {
@@ -229,6 +244,7 @@ public class Respuesta {
     sb.append("    folioConsulta: ").append(toIndentedString(folioConsulta)).append("\n");
     sb.append("    folioConsultaOtorgante: ").append(toIndentedString(folioConsultaOtorgante)).append("\n");
     sb.append("    claveOtorgante: ").append(toIndentedString(claveOtorgante)).append("\n");
+    sb.append("    declaracionesConsumidor: ").append(toIndentedString(declaracionesConsumidor)).append("\n");
     sb.append("    persona: ").append(toIndentedString(persona)).append("\n");
     sb.append("    consultas: ").append(toIndentedString(consultas)).append("\n");
     sb.append("    creditos: ").append(toIndentedString(creditos)).append("\n");
