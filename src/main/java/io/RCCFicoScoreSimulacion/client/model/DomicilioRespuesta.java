@@ -22,7 +22,7 @@ public class DomicilioRespuesta {
   @SerializedName("estado")
   private CatalogoEstados estado = null;
   @SerializedName("CP")
-  private Integer CP = null;
+  private String CP = null;
   @SerializedName("fechaResidencia")
   private String fechaResidencia = null;
   @SerializedName("numeroTelefono")
@@ -101,16 +101,16 @@ public class DomicilioRespuesta {
   public void setEstado(CatalogoEstados estado) {
     this.estado = estado;
   }
-  public DomicilioRespuesta CP(Integer CP) {
+  public DomicilioRespuesta CP(String CP) {
     this.CP = CP;
     return this;
   }
    
   @ApiModelProperty(example = "47917", value = "El código postal reportado debeestar compuesto por 5 dígitos. Para que el código postal sea válido deberá corresponder al estado reportado.")
-  public Integer getCP() {
+  public String getCP() {
     return CP;
   }
-  public void setCP(Integer CP) {
+  public void setCP(String CP) {
     this.CP = CP;
   }
   public DomicilioRespuesta fechaResidencia(String fechaResidencia) {
