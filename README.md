@@ -1,6 +1,6 @@
-# Reporte de Crédito Consolidado con FICO® Score
+# Simulación del Reporte de Crédito Consolidado con FICO® Score
 
-Este reporte muestra el historial crediticio con los Campos Asociados a Nómina, el cumplimiento de pago de los compromisos que la persona ha adquirido con entidades financieras, no financieras e instituciones comerciales que dan crédito o participan en actividades afines al crédito.
+Simula el reporta del historial crediticio con los Campos Asociados a Nómina, el cumplimiento de pago de los compromisos que la persona ha adquirido con entidades financieras, no financieras e instituciones comerciales que dan crédito o participan en actividades afines al crédito.
 
 ## Requisitos
 
