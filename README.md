@@ -59,7 +59,7 @@ public void setUp() {
 
 ```
 
-En el archivo **TelecosSimulacionApiTest**, que se encuentra en ***src/test/java/io/TelcosSimulacion/client/api*** se deberá modificar el siguiente fragmento de código con los datos correspondientes:
+En el archivo **ApiTest**, que se encuentra en ***src/test/java/io/ApiTest/client/api*** se deberá modificar el siguiente fragmento de código con los datos correspondientes:
 
 ```java
 @Test
