@@ -12,6 +12,7 @@ import io.RCCFicoScoreSimulacion.client.model.Mensajes;
 import io.RCCFicoScoreSimulacion.client.model.PersonaPeticion;
 import io.RCCFicoScoreSimulacion.client.model.Respuesta;
 import io.RCCFicoScoreSimulacion.client.model.Scores;
+
 import okhttp3.OkHttpClient;
 
 import org.junit.Test;
@@ -32,9 +33,10 @@ public class ApiTest {
 	public void setUp() {
 		this.apiClient = api.getApiClient();
 		this.apiClient.setBasePath("the_url");
-		OkHttpClient insecureClient = ApiClient.getClientNoSSLVerification();
-		OkHttpClient okHttpClient = insecureClient.newBuilder()
-				.readTimeout(60, TimeUnit.SECONDS).build();
+		OkHttpClient okHttpClient = new OkHttpClient()
+				.newBuilder()
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build();
 		apiClient.setHttpClient(okHttpClient);
 	}
 
