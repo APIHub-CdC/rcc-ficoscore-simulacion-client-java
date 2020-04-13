@@ -1,4 +1,4 @@
-# Simulación del Reporte de Crédito Consolidado con FICO® Score
+# rcc-ficoscore-simulacion-client-java
 
 Simula el reporta del historial crediticio con los Campos Asociados a Nómina, el cumplimiento de pago de los compromisos que la persona ha adquirido con entidades financieras, no financieras e instituciones comerciales que dan crédito o participan en actividades afines al crédito.
 
@@ -22,7 +22,7 @@ mvn install -Dmaven.test.skip=true
 
 ### Paso 1. Agregar el producto a la aplicación
 
-Al iniciar sesión seguir os siguientes pasos:
+Al iniciar sesión seguir los siguientes pasos:
 
  1. Dar clic en la sección "**Mis aplicaciones**".
  2. Seleccionar la aplicación.
