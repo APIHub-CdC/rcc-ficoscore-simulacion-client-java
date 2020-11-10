@@ -1,6 +1,6 @@
-# rcc-ficoscore-simulacion-client-java
+# rcc-ficoscore-simulacion-client-java [![GitHub Packages](https://img.shields.io/badge/Maven&nbsp;package-Last&nbsp;version-lemon)](https://github.com/orgs/APIHub-CdC/packages?repo_name=rcc-ficoscore-simulacion-client-java) 
 
-Simula el reporta del historial crediticio con los Campos Asociados a Nómina, el cumplimiento de pago de los compromisos que la persona ha adquirido con entidades financieras, no financieras e instituciones comerciales que dan crédito o participan en actividades afines al crédito.
+Simula el reporta del historial crediticio con los Campos Asociados a Nómina, el cumplimiento de pago de los compromisos que la persona ha adquirido con entidades financieras, no financieras e instituciones comerciales que dan crédito o participan en actividades afines al crédito.<br/><img src='https://github.com/APIHub-CdC/imagenes-cdc/blob/master/circulo_de_credito-apihub.png' height='37' width='160'/></p><br/>
 
 ## Requisitos
 
@@ -38,73 +38,63 @@ Al iniciar sesión seguir los siguientes pasos:
 
 ### Paso 2. Capturar los datos de la petición
 
-Los siguientes datos a modificar se encuentran en ***src/test/java/ApiTest.java***
+Los siguientes datos a modificar se encuentran en ***src/test/java/com/cdc/apihub/mx/RCC_FS/simulacion/test/ApiTest.java***
 
 Es importante contar con el setUp() que se encargará de inicializar la url. Modificar la URL ***('the_url')***, como se muestra en el siguiente fragmento de código:
 
 ```java
 private Logger logger = LoggerFactory.getLogger(ApiTest.class.getName());
-private final RCCFicoScoreSimulacionApi api = new RCCFicoScoreSimulacionApi();
+private final RCCFSApi api = new RCCFSApi();
 private ApiClient apiClient = null;
+private String xApiKey = "your_api_key";
+private String url = "the_url";
 
 @Before()
 public void setUp() {
 	this.apiClient = api.getApiClient();
-	this.apiClient.setBasePath("the_url");
-	OkHttpClient insecureClient = ApiClient.getClientNoSSLVerification();
-	OkHttpClient okHttpClient = insecureClient.newBuilder()
-			.readTimeout(60, TimeUnit.SECONDS).build();
+	this.apiClient.setBasePath(url);
+	OkHttpClient okHttpClient = new OkHttpClient()
+			.newBuilder()
+            .readTimeout(30, TimeUnit.SECONDS)
+            .build();
 	apiClient.setHttpClient(okHttpClient);
 }
-
 ```
 
-En el archivo **ApiTest**, que se encuentra en ***src/test/java/io/ApiTest/client/api*** se deberá modificar el siguiente fragmento de código con los datos correspondientes:
+De igual manera, en el archivo **ApiTest**, se deberá modificar el siguiente fragmento de código con los datos correspondientes:
+
+> **NOTA:** Para más ejemplos de simulación, consulte la colección de Postman.
 
 ```java
 @Test
 public void getReporteTest() throws ApiException {
 
-	String xApiKey = "your_api_key";
-	Boolean xFullReport = false;
+	Boolean xFullReport = true;
 
 	PersonaPeticion persona = new PersonaPeticion();
 	DomicilioPeticion domicilio = new DomicilioPeticion();
 	try {
-		persona.setApellidoPaterno("ROBERTO");
-		persona.setApellidoMaterno("SAHAGUN");
-		persona.setApellidoAdicional(null);
-		persona.setPrimerNombre("ZARAGOZA");
-		persona.setSegundoNombre(null);
-		persona.setFechaNacimiento("2001-01-01");
-		persona.setRFC("SAZR010101");
-		persona.setCURP(null);
+		persona.setApellidoPaterno("SESENTAYDOS");
+		persona.setApellidoMaterno("PRUEBA");
+		persona.setPrimerNombre("JUAN");
+		persona.setFechaNacimiento("1965-08-09");
+		persona.setRFC("SEPJ650809JG1");
 		persona.setNacionalidad("MX");
-		persona.setResidencia(null);
-		persona.setEstadoCivil(null);
-		persona.setSexo(null);
-		persona.setClaveElectorIFE(null);
-		persona.setNumeroDependientes(null);
-		persona.setFechaDefuncion(null);
-		persona.setDomicilio(null);
 
-		domicilio.setDireccion("HIDALGO 32");
-		domicilio.setColoniaPoblacion("CENTRO");
-		domicilio.setDelegacionMunicipio("LA BARCA");
-		domicilio.setCiudad("BENITO JUAREZ");
-		domicilio.setEstado(CatalogoEstados.JAL);
-		domicilio.setCP("47917");
-		domicilio.setFechaResidencia(null);
-		domicilio.setNumeroTelefono(null);
-		domicilio.setTipoDomicilio(null);
-		domicilio.setTipoAsentamiento(null);
+		domicilio.setDireccion("PASADISO ENCONTRADO 58");
+		domicilio.setColoniaPoblacion("MONTEVIDEO");
+		domicilio.setDelegacionMunicipio("GUSTAVO A MADERO");
+		domicilio.setCiudad("CIUDAD DE MÉXICO");
+		domicilio.setEstado(CatalogoEstados.CDMX);
+		domicilio.setCP("07730");
 
 		persona.setDomicilio(domicilio);
 
 		Respuesta response = api.getReporte(xApiKey, persona, xFullReport);
 
-		Assert.assertTrue(response.getFolioConsulta() != null);
 		logger.info(response.toString());
+		Assert.assertTrue(response.getFolioConsulta() != null);
+		
 
 		if (response.getFolioConsulta() != null && !xFullReport) {
 			String folioConsulta = response.getFolioConsulta();
