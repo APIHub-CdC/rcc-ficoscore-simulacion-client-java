@@ -69,8 +69,6 @@ De igual manera, en el archivo **ApiTest**, se deberá modificar el siguiente fr
 @Test
 public void getReporteTest() throws ApiException {
 
-	Boolean xFullReport = true;
-
 	PersonaPeticion persona = new PersonaPeticion();
 	DomicilioPeticion domicilio = new DomicilioPeticion();
 	try {
@@ -90,7 +88,7 @@ public void getReporteTest() throws ApiException {
 
 		persona.setDomicilio(domicilio);
 
-		Respuesta response = api.getReporte(xApiKey, persona, xFullReport);
+		Respuesta response = api.getReporte(xApiKey, persona);
 
 		logger.info(response.toString());
 		Assert.assertTrue(response.getFolioConsulta() != null);
